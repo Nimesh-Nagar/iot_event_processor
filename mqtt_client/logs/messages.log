@@ -1,0 +1,15 @@
+2025-05-13 20:30:38,711 - INFO: [CONNECTION MADE]
+2025-05-13 20:30:38,714 - INFO: [SEND SUB] 1 [b'device/events']
+2025-05-13 20:30:38,715 - INFO: [SUBACK] 1 (0,)
+2025-05-13 20:32:35,071 - INFO: [CONN CLOSE NORMALLY]
+2025-05-13 20:33:38,200 - INFO: [CONNECTION MADE]
+2025-05-13 20:33:38,202 - INFO: [SEND SUB] 1 [b'device/events']
+2025-05-13 20:33:38,203 - INFO: [SUBACK] 1 (0,)
+2025-05-13 20:34:07,382 - ERROR: Invalid Message: {"device_id": "1002", "sensor_type": "temperature", "sensor_value": 28.5, "timestamp": "12:13:55"} | Error : Invalid ISO8601 Timestamp formate : timestamp 
+2025-05-13 20:34:07,382 - ERROR:  Error: Validation failed
+2025-05-13 20:37:53,317 - INFO: [CONN CLOSE NORMALLY]
+2025-05-13 21:42:48,280 - INFO: [CONNECTION MADE]
+2025-05-13 21:42:48,281 - INFO: [SEND SUB] 1 [b'device/events']
+2025-05-13 21:42:48,282 - INFO: [SUBACK] 1 (0,)
+2025-05-13 21:45:42,729 - ERROR: Invalid Message: {"device_id": "1002", "sensor_type": "temperature", "sensor_value": 24, "timestamp": "2025-05-13T21:45:42.728563"} | Error : Invalid data type for key : sensor_value 
+2025-05-13 21:45:42,730 - ERROR:  Error: Validation failed
