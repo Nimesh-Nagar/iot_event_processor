@@ -1,4 +1,4 @@
 
 : Docker cmds : 
 sudo docker build -t broker_img .
-sudo docker run -it -p 1883:1883 --name mqtt_broker broker_img
+sudo docker run -d -p 1883:1883 --name mqtt_broker --restart always broker_img
