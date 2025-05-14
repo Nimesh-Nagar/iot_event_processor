@@ -14,3 +14,26 @@
 2025-05-13 21:45:42,729 - ERROR: Invalid Message: {"device_id": "1002", "sensor_type": "temperature", "sensor_value": 24, "timestamp": "2025-05-13T21:45:42.728563"} | Error : Invalid data type for key : sensor_value 
 2025-05-13 21:45:42,730 - ERROR:  Error: Validation failed
 2025-05-13 22:00:36,732 - INFO: [CONN CLOSE NORMALLY]
+2025-05-14 16:32:00,964 - INFO: [CONNECTION MADE]
+2025-05-14 16:32:00,965 - INFO: [SEND SUB] 1 [b'device/events']
+2025-05-14 16:32:00,966 - INFO: [SUBACK] 1 (0,)
+2025-05-14 16:34:38,476 - INFO: [CONN CLOSE NORMALLY]
+2025-05-14 16:42:21,887 - INFO: [CONNECTION MADE]
+2025-05-14 16:42:21,895 - INFO: [SEND SUB] 1 [b'device/events']
+2025-05-14 16:42:21,896 - INFO: [SUBACK] 1 (0,)
+2025-05-14 16:42:27,958 - INFO: [CONN CLOSE NORMALLY]
+2025-05-14 16:42:28,176 - WARNING: [TRYING WRITE TO CLOSED SOCKET]
+2025-05-14 16:42:28,180 - ERROR: Task was destroyed but it is pending!
+task: <Task pending name='Task-4' coro=<Client.reconnect() running at /home/nimesh/cloud/iot_event_processor/my_env/lib/python3.10/site-packages/gmqtt/client.py:264> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[MqttPackageHandler._handle_exception_in_future()]>
+2025-05-14 16:42:47,562 - INFO: [CONNECTION MADE]
+2025-05-14 16:42:47,564 - INFO: [SEND SUB] 1 [b'device/events']
+2025-05-14 16:42:47,564 - INFO: [SUBACK] 1 (0,)
+2025-05-14 16:42:53,573 - INFO: [CONN CLOSE NORMALLY]
+2025-05-14 16:42:59,583 - INFO: [CONNECTION MADE]
+2025-05-14 16:42:59,584 - INFO: [SEND SUB] 2 [b'device/events']
+2025-05-14 16:42:59,585 - INFO: [SUBACK] 2 (0,)
+2025-05-14 16:43:05,598 - INFO: [CONN CLOSE NORMALLY]
+2025-05-14 16:43:11,606 - INFO: [CONNECTION MADE]
+2025-05-14 16:43:11,608 - INFO: [SEND SUB] 3 [b'device/events']
+2025-05-14 16:43:11,609 - INFO: [SUBACK] 3 (0,)
+2025-05-14 16:43:13,545 - INFO: [CONN CLOSE NORMALLY]

@@ -26,7 +26,7 @@ async def publish_message():
     message1 = {
         "device_id": "1001",
         "sensor_type": "humidity",
-        "sensor_value": 81.2,
+        "sensor_value": 82.9,
         "timestamp": datetime.now().isoformat()
         # "timestamp": "12:13:55"
     }
@@ -34,12 +34,19 @@ async def publish_message():
     message2 = {
         "device_id": "1002",
         "sensor_type": "temperature",
-        "sensor_value": 25.6,
+        "sensor_value": 27.2,
         "timestamp": datetime.now().isoformat()
         # "timestamp": "12:13:55"
     }
 
-    json_payload = json.dumps(message1) #change message number accordingly
+    message3 = {
+        "device_id": 1003,
+        "sensor_type": "light",
+        "sensor_value": 660.3, 
+        "timestamp": datetime.now().isoformat(),
+    }
+
+    json_payload = json.dumps(message3) #change message number accordingly
 
     client.publish(PUB_TOPIC, json_payload, qos=1)
     print(f"Published: {json_payload}")
