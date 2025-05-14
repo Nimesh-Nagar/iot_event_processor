@@ -13,3 +13,4 @@
 2025-05-13 21:42:48,282 - INFO: [SUBACK] 1 (0,)
 2025-05-13 21:45:42,729 - ERROR: Invalid Message: {"device_id": "1002", "sensor_type": "temperature", "sensor_value": 24, "timestamp": "2025-05-13T21:45:42.728563"} | Error : Invalid data type for key : sensor_value 
 2025-05-13 21:45:42,730 - ERROR:  Error: Validation failed
+2025-05-13 22:00:36,732 - INFO: [CONN CLOSE NORMALLY]
