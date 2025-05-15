@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+    mqtt-broker:
+        build: ./mqtt_broker
+        container_name: mqtt_broker
+        restart: always
+        networks: 
+            - iot_network
+        volumes: 
+            - ./mqtt_broker/config:/mosquitto/config
+            - ./mqtt_broker/log:/mosquitto/log     
+        ports: 
+            - "9001:9001" # websockets port
+            - "1883:1883" # mqtt port
+
+
+    # mqtt subscriber containerization
+    subscriber:
+        build: ./mqtt_client
+        container_name: mqtt_subscriber
+
+        depends_on:
+            - mqtt-broker
+            - flask-api 
+
+        networks: 
+            - iot_network
+        environment:
+            - MQTT_BROKER_HOST=mqtt-broker
+            - MQTT_TOPIC=device/events
+            - DB_PATH=/data/iot_database.db   
+        volumes:
+            - data:/data
+        
+        
+    # flask app containerization
+    flask-api:
+        build: ./rest_api
+        container_name: flask_api
+
+        depends_on: 
+            - mqtt-broker
+        networks:
+            - iot_network
+        environment:
+            - DB_PATH=/data/iot_database.db
+            
+        volumes:
+            - data:/data
+        ports:
+            - "5001:5001"
+
+networks:
+  iot_network:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local

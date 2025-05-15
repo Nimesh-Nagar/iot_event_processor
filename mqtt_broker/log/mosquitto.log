@@ -104,3 +104,19 @@
 1747221263: New connection from 172.19.0.1:33856 on port 1883.
 1747221263: New client connected from 172.19.0.1:33856 as publisher_client (p5, c1, k60).
 1747221265: Client publisher_client disconnected.
+1747223281: Client subscriber_client has exceeded timeout, disconnecting.
+1747223287: New connection from 172.19.0.4:48322 on port 1883.
+1747223287: New client connected from 172.19.0.4:48322 as subscriber_client (p5, c0, k60).
+1747227421: Client subscriber_client has exceeded timeout, disconnecting.
+1747227427: New connection from 172.19.0.4:37368 on port 1883.
+1747227427: New client connected from 172.19.0.4:37368 as subscriber_client (p5, c0, k60).
+1747228242: Client subscriber_client disconnected.
+1747228243: mosquitto version 2.0.21 terminating
+1747288377: mosquitto version 2.0.21 starting
+1747288377: Config loaded from /mosquitto/config/mosquitto.conf.
+1747288377: Opening ipv4 listen socket on port 1883.
+1747288377: Opening ipv6 listen socket on port 1883.
+1747288377: Opening websockets listen socket on port 9001.
+1747288377: mosquitto version 2.0.21 running
+1747288378: New connection from 172.19.0.2:56514 on port 1883.
+1747288378: New client connected from 172.19.0.2:56514 as subscriber_client (p5, c1, k60).
