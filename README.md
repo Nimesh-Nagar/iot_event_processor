@@ -25,7 +25,7 @@ The system is divided into three main services:
 
 1. Clone the Repository:
    ```bash
-   git clone <url>
+   git clone https://github.com/Nimesh-Nagar/iot_event_processor.git
    cd iot_event_processor
    ```
 2. Build and Start Services
