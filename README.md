@@ -58,13 +58,56 @@ mosquitto_pub -h localhost -t /devices/events -m '{"device_id": "sensor_01", "se
 - Verify Device Information
   open browser past below urls
   ```
-  http://localhost:5000/api/v1/devices
+  http://localhost:5001/api/v1/devices
   ```
 - Fetch Device Events:
   ```
-  http://localhost:5000/api/v1/events?device_id=1001
+  http://localhost:5001/api/v1/events?device_id=1001
   ```
 
+## API Documentation
+
+### Base URL
+
+```
+http://<host>:5001/api/v1
+```
+
+### Endpoints
+
+**1. List All Devices**
+
+**GET** `/devices`
+
+- Response:
+
+```json
+[
+  {"device_id": "1001", "last_seen": "2025-03-06T10:20:30Z"}
+]
+```
+
+**2. Get Device Events**
+
+**GET** `/events?device_id=<device_id>`
+
+- Query Params:
+  - `device_id` (required): Device ID to fetch event logs.
+- Response:
+
+```json
+[
+  {"event_id": 1, "sensor_type": "temperature", "sensor_value": 23.4, "timestamp": "2025-03-06T10:20:30Z"}
+]
+```
+
+**Error Response**
+
+```json
+{
+  "error": "Missing required query parameter: ?device_id="
+}
+```
 
   
 
