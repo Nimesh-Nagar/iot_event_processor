@@ -13,7 +13,8 @@ The system is divided into three main services:
 
 ## System Architecture 
 
-<img>
+![sys_archi_iot_event_processor](https://github.com/user-attachments/assets/85d0b54a-48e1-4892-8607-b5b94ea3c8a3)
+
 
 ## Setup Instructions
 
@@ -83,7 +84,7 @@ http://<host>:5001/api/v1
 
 ```json
 [
-  {"device_id": "1001", "last_seen": "2025-03-06T10:20:30Z"}
+  {"device_id": "1001", "last_seen": "2025-05-14T10:00:00Z"}
 ]
 ```
 
@@ -97,7 +98,7 @@ http://<host>:5001/api/v1
 
 ```json
 [
-  {"event_id": 1, "sensor_type": "temperature", "sensor_value": 23.4, "timestamp": "2025-03-06T10:20:30Z"}
+  {"event_id": 1, "sensor_type": "temperature", "sensor_value": 23.4, "timestamp": "2025-05-14T10:00:00Z"}
 ]
 ```
 
@@ -109,7 +110,10 @@ http://<host>:5001/api/v1
 }
 ```
 
-  
+
+**Conclusion**
+
+This project demonstrates an IoT event processing system capable of validating, storing, and serving sensor data with a scalable microservices architecture.
 
 
 
