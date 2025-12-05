@@ -10,15 +10,14 @@ The system is divided into three main services:
 2. **MQTT Client** - Subscribes to sensor data topics, validates JSON payloads, and stores them in a database.
 3. **REST API** - Provides device information and sensor data through HTTP endpoints.
 
-
-## System Architecture 
+## System Architecture
 
 ![sys_archi_iot_event_processor](https://github.com/user-attachments/assets/85d0b54a-48e1-4892-8607-b5b94ea3c8a3)
-
 
 ## Setup Instructions
 
 **Prerequisites**
+
 - Docker
 - Docker Compose
 
@@ -37,21 +36,23 @@ The system is divided into three main services:
    ```bash
    sudo docker ps -a
    ```
-    for flask app openbrowser and use below url
+   for flask app openbrowser and use below url
    ```
-   http://localhost:5001 
+   http://localhost:5001
    ```
 
-
-**Test Cases & Example Usage** 
+**Test Cases & Example Usage**
 
 - Publish MQTT Messages:
 
 via `pub_client.py`
+
 ```bash
 python pub_client.py
 ```
+
 or using below command
+
 ```bash
 mosquitto_pub -h localhost -t /devices/events -m '{"device_id": "sensor_01", "sensor_type": "temperature", "sensor_value": 24.5, "timestamp": "2025-05-14T10:00:00Z"}'
 ```
@@ -83,9 +84,7 @@ http://<host>:5001/api/v1
 - Response:
 
 ```json
-[
-  {"device_id": "1001", "last_seen": "2025-05-14T10:00:00Z"}
-]
+[{ "device_id": "1001", "last_seen": "2025-05-14T10:00:00Z" }]
 ```
 
 **2. Get Device Events**
@@ -98,7 +97,12 @@ http://<host>:5001/api/v1
 
 ```json
 [
-  {"event_id": 1, "sensor_type": "temperature", "sensor_value": 23.4, "timestamp": "2025-05-14T10:00:00Z"}
+  {
+    "event_id": 1,
+    "sensor_type": "temperature",
+    "sensor_value": 23.4,
+    "timestamp": "2025-05-14T10:00:00Z"
+  }
 ]
 ```
 
@@ -110,10 +114,23 @@ http://<host>:5001/api/v1
 }
 ```
 
-
 **Conclusion**
 
 This project demonstrates an IoT event processing system capable of validating, storing, and serving sensor data with a scalable microservices architecture.
 
+**Future Plan**
 
+IoT Device → MQTT Broker → sub_client.py → SQLite DB
+↘ WebSocket Emit → React Dashboard (real-time)
+React Dashboard → Fetch REST API → Show historical data
 
+graph TD
+A[IoT Device] --> B(MQTT Broker);
+B --> C[sub_client.py (Python/Paho)];
+C --> D[SQLite DB];
+C --> E[WebSocket Emit (e.g., Socket.IO)];
+E --> F[React Dashboard (Real-time View)];
+F --> G[Fetch REST API];
+G --> H[Show Historical Data];
+D --> I[REST API Backend];
+I --> G;
