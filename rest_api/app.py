@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import sqlite3
 import os
 import logging
+from flask_cors import CORS 
 
 from dotenv import load_dotenv
 
@@ -18,6 +19,7 @@ DB_PATH = os.path.join(os.path.dirname(__file__), '../data/iot_database.db')
 # DB_PATH = os.getenv("DB_PATH", "/data/test.db")
 
 app = Flask(__name__)
+CORS(app)
 API_VERSION = '/api/v1'
 
 @app.route("/", methods=['GET'])
@@ -40,7 +42,18 @@ def get_devices():
         conn.close()
 
         logging.info(f"{len(devices)} devices fetched successfully")
-        return jsonify( [{'device_id' : device[0], 'last_seen' : device[1] } for device in devices] )
+
+        return jsonify( {
+            "status": "success",
+            "count": len(devices),
+            "devices": [
+                {
+                    'device_id' : device[0], 
+                    'last_seen' : device[1] 
+                } for device in devices
+            ]
+        } )
+
     except Exception as e:
         logging.error(f"Error fetching devices: {e}")
         return jsonify({"error": "Internal Server Error"}), 500
@@ -51,24 +64,36 @@ def get_events():
 
     if not device_id:
         logging.warning("Missing required device_id parameter")
-        return jsonify({"error": "Missing required query parameter: ?device_id="}), 400  # HTTP 400 Bad Request
+        return jsonify({
+            "status": "error",
+            "message": "Missing required query parameter: ?device_id="
+            }), 400  # HTTP 400 Bad Request
 
     try:
         logging.info(f"Fetching events for device_id: {device_id}")
         conn = sqlite3.connect(DB_PATH)
+
         c = conn.cursor()    
         c.execute("SELECT event_id, sensor_type, sensor_value, timestamp FROM Events WHERE device_id = ? ORDER BY timestamp DESC", (device_id,))
-        events = c.fetchall()
 
+        events = c.fetchall()
         conn.close()
 
         logging.info(f"{len(events)} events fetched for device_id: {device_id}")
-        return jsonify([{
-            "event_id": event[0],
-            "sensor_type": event[1],
-            "sensor_value": event[2],
-            "timestamp": event[3]
-        } for event in events])
+
+        return jsonify({
+            "status": "success",
+            "count": len(events),
+            "events":[
+                {
+                    "event_id": event[0],
+                    "sensor_type": event[1],
+                    "sensor_value": event[2],
+                    "timestamp": event[3]
+                } for event in events
+            ]
+        })
+    
     
     # logic for without query api
     # conn = sqlite3.connect('iot_database.db')
