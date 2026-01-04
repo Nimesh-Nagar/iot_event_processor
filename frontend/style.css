@@ -1,0 +1,33 @@
+.row {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row {
+    width: 100%;
+    padding: 10px;
+}
+
+.time-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.time-value {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.time-epoch {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 6px;
+} 
