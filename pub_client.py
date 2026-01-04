@@ -46,7 +46,14 @@ async def publish_message():
         "timestamp": datetime.now().isoformat(),
     }
 
-    json_payload = json.dumps(message3) #change message number accordingly
+    test = {
+        "temperature": 39,
+        "humidity": 77,
+        "timestamps": datetime.now().isoformat()
+        # "timestamp" : "1766661181"
+    }
+
+    json_payload = json.dumps(test) #change message number accordingly
 
     client.publish(PUB_TOPIC, json_payload, qos=1)
     print(f"Published: {json_payload}")
